@@ -1,10 +1,16 @@
 package com.cydeo.tests.day5_testNG_intro_dropdowns;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class TestNG_Intro {
+    @BeforeClass
+    public void setUpMethod1(){
+        System.out.println("----> BeforeClass is running!");
+    }
+    @AfterClass
+    public void tearDownClass(){
+        System.out.println("----> AfterClass is running!");
+    }
     @BeforeMethod
     public void setUpMethod() {
         System.out.println("-->Before Method Is Running!");
@@ -15,12 +21,12 @@ public class TestNG_Intro {
         System.out.println("--> After Method Is Running!!! ");
     }
 
-    @Test
+    @Test(priority = 1)
     public void test1() {
         System.out.println("Test 1 is running...");
     }
 
-    @Test
+    @Test(priority = 2)
     public void test2() {
         System.out.println("Test 2 is running...");
     }
