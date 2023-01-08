@@ -61,9 +61,16 @@ public class DropdownPractices {
         monthDropdown.selectByValue("11");
         //Select day using : index number
         dayDropdown.selectByIndex(0);
+        String expectedYear="1923";
+        String expectedMonth="December";
+        String expectedDay="1";
+
         String actualYear=yearDropdown.getFirstSelectedOption().getText();
         String actualMonth=monthDropdown.getFirstSelectedOption().getText();
         String actualDay=dayDropdown.getFirstSelectedOption().getText();
+        Assert.assertTrue(actualYear.equals(expectedYear));
+        Assert.assertTrue(actualMonth.equals(expectedMonth));
+        Assert.assertTrue(actualDay.equals(expectedDay));
 
 
 
