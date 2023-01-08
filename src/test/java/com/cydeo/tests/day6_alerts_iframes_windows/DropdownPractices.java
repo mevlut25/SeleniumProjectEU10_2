@@ -5,11 +5,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 public class DropdownPractices {
+    public WebDriver driver;
+
+    @BeforeMethod
+    public void setUpMethod(){
+        //1. Open Chrome browser
+        //2. Go to http://practice.cybertekschool.com/dropdown
+        driver= WebDriverFactory.getDriver("chrome");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("http://practice.cybertekschool.com/dropdown");
+    }
 
 
     @Test
@@ -35,8 +47,13 @@ public class DropdownPractices {
         String expectedOptionText="California";
         String actualOptionText=stateDropdown.getFirstSelectedOption().getText();
         Assert.assertEquals(actualOptionText,expectedOptionText);
-
-
+    }
+    @Test
+    public void dropdown_task6(){
+        //3. Select “December 1st, 1923” and verify it is selected.
+        // Select year using : visible text
+        //Select month using : value attribute
+        //Select day using : index number
 
     }
 }
