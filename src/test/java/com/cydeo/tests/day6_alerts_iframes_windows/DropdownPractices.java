@@ -61,7 +61,7 @@ public class DropdownPractices {
         monthDropdown.selectByValue("11");
         //Select day using : index number
         dayDropdown.selectByIndex(0);
-        String expectedYear="1923";
+        String expectedYear="1924";
         String expectedMonth="December";
         String expectedDay="1";
 
