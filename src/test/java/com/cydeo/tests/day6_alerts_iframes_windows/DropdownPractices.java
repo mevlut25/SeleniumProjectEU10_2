@@ -55,10 +55,17 @@ public class DropdownPractices {
         Select monthDropdown=new Select(driver.findElement(By.xpath("//select[@id='month']")));
         Select dayDropdown=new Select(driver.findElement(By.xpath("//select[@id='day']")));
 
-
         // Select year using : visible text
+        yearDropdown.selectByVisibleText("1924");
         //Select month using : value attribute
+        monthDropdown.selectByValue("11");
         //Select day using : index number
+        dayDropdown.selectByIndex(0);
+        String actualYear=yearDropdown.getFirstSelectedOption().getText();
+        String actualMonth=monthDropdown.getFirstSelectedOption().getText();
+        String actualDay=dayDropdown.getFirstSelectedOption().getText();
+
+
 
     }
 }
