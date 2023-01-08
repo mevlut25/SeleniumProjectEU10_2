@@ -55,10 +55,29 @@ public class T1_Alert_Practices {
         alert.accept();
         //5. Verify “You clicked: Ok” text is displayed.
         WebElement resultText=driver.findElement(By.xpath("//p[@id='result']"));
-        Assert.assertTrue(resultText.isDisplayed());
+        Assert.assertTrue(resultText.isDisplayed(),"Result is not displayed");
         String expectedText="You clicked: Ok";
         String actualText=resultText.getText();
         Assert.assertEquals(actualText,expectedText,"Actual result text is not as expected");
+    }
+    @Test
+    public void prompt_alert_test() throws InterruptedException {
+        //3. Click to “Click for JS Prompt” button
+        WebElement promptAlertButton=driver.findElement(By.xpath("//button[.='Click for JS Prompt']"));
+        Thread.sleep(2000);
+        promptAlertButton.click();
+        //4. Send “hello” text to alert
+        Alert alert=driver.switchTo().alert();
+        alert.sendKeys("hello");
+        //5. Click to OK button from the alert
+        alert.accept();
+        //6. Verify “You entered: hello” text is displayed.
+        WebElement resultText=driver.findElement(By.xpath("//p[@id='result']"));
+        Assert.assertTrue(resultText.isDisplayed(),"Result is not displayed");
+        String expectedText="You entered: hello";
+        String actualText=resultText.getText();
+        Assert.assertEquals(actualText,expectedText,"Actual result text is not as expected");
+
 
 
 
