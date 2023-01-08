@@ -28,22 +28,41 @@ public class T1_Alert_Practices {
     public void alert_test() throws InterruptedException {
 
         //3. Click to “Click for JS Alert” button
-        WebElement informationAlertButton=driver.findElement(By.xpath("//button[.='Click for JS Alert']"));
+        WebElement informationAlertButton = driver.findElement(By.xpath("//button[.='Click for JS Alert']"));
         Thread.sleep(2000);
         informationAlertButton.click();
         //To be able to click to Alert OK button we need to switch driver's focus to Alert itself.
-        Alert alert=driver.switchTo().alert();
+        Alert alert = driver.switchTo().alert();
         //4. Click to OK button from the alert
         alert.accept();
         //5. Verify “You successfully clicked an alert” text is displayed.
-        WebElement resultText=driver.findElement(By.xpath("//p[@id='result']"));
+        WebElement resultText = driver.findElement(By.xpath("//p[@id='result']"));
         //Failure message will only be displayed if assertion fails: "Result text is NOT displayed"
-        Assert.assertTrue(resultText.isDisplayed(),"Result is not displayed");
+        Assert.assertTrue(resultText.isDisplayed(), "Result is not displayed");
         String expectedText = "You successfully clicked an alert";
         String actualText = resultText.getText();
-        Assert.assertEquals(actualText,expectedText,"Actual result text is not as expected");
+        Assert.assertEquals(actualText, expectedText, "Actual result text is not as expected");
     }
 
+    @Test
+    public void confirmation_alert_test() throws InterruptedException {
+        //3. Click to “Click for JS Confirm” button
+        WebElement confirmationAlertButton=driver.findElement(By.xpath("//button[.='Click for JS Confirm']"));
+        Thread.sleep(2000);
+        confirmationAlertButton.click();
+        //4. Click to OK button from the alert
+        Alert alert=driver.switchTo().alert();
+        alert.accept();
+        //5. Verify “You clicked: Ok” text is displayed.
+        WebElement resultText=driver.findElement(By.xpath("//p[@id='result']"));
+        Assert.assertTrue(resultText.isDisplayed());
+        String expectedText="You clicked: Ok";
+        String actualText=resultText.getText();
+        Assert.assertEquals(actualText,expectedText,"Actual result text is not as expected");
+
+
+
+    }
 }
 
 
