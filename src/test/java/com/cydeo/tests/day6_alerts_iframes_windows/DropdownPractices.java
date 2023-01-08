@@ -26,8 +26,10 @@ public class DropdownPractices {
         Thread.sleep(1000);
         stateDropdown.selectByVisibleText("Illinois");
         //4. Select Virginia
+        Thread.sleep(1000);
         stateDropdown.selectByValue("VA");
         //5. Select California
+        Thread.sleep(1000);
         stateDropdown.selectByIndex(5);
         //6. Verify final selected option is California.
         String expectedOptionText="California";
