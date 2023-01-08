@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -14,10 +15,10 @@ public class DropdownPractices {
     public WebDriver driver;
 
     @BeforeMethod
-    public void setUpMethod(){
+    public void setUpMethod() {
         //1. Open Chrome browser
         //2. Go to http://practice.cybertekschool.com/dropdown
-        driver= WebDriverFactory.getDriver("chrome");
+        driver = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://practice.cybertekschool.com/dropdown");
@@ -28,12 +29,12 @@ public class DropdownPractices {
     public void dropdown_task5() throws InterruptedException {
         //1. Open Chrome browser
         //2. Go to http://practice.cybertekschool.com/dropdown
-        WebDriver driver= WebDriverFactory.getDriver("chrome");
+        WebDriver driver = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://practice.cybertekschool.com/dropdown");
 
-        Select stateDropdown=new Select(driver.findElement(By.xpath("//select[@id='state']")));
+        Select stateDropdown = new Select(driver.findElement(By.xpath("//select[@id='state']")));
         //3. Select Illinois
         Thread.sleep(1000);
         stateDropdown.selectByVisibleText("Illinois");
@@ -44,16 +45,17 @@ public class DropdownPractices {
         Thread.sleep(1000);
         stateDropdown.selectByIndex(5);
         //6. Verify final selected option is California.
-        String expectedOptionText="California";
-        String actualOptionText=stateDropdown.getFirstSelectedOption().getText();
-        Assert.assertEquals(actualOptionText,expectedOptionText);
+        String expectedOptionText = "California";
+        String actualOptionText = stateDropdown.getFirstSelectedOption().getText();
+        Assert.assertEquals(actualOptionText, expectedOptionText);
     }
+
     @Test
-    public void dropdown_task6(){
+    public void dropdown_task6() {
         //3. Select “December 1st, 1923” and verify it is selected.
-        Select yearDropdown=new Select(driver.findElement(By.xpath("//select[@id='year']")));
-        Select monthDropdown=new Select(driver.findElement(By.xpath("//select[@id='month']")));
-        Select dayDropdown=new Select(driver.findElement(By.xpath("//select[@id='day']")));
+        Select yearDropdown = new Select(driver.findElement(By.xpath("//select[@id='year']")));
+        Select monthDropdown = new Select(driver.findElement(By.xpath("//select[@id='month']")));
+        Select dayDropdown = new Select(driver.findElement(By.xpath("//select[@id='day']")));
 
         // Select year using : visible text
         yearDropdown.selectByVisibleText("1924");
@@ -61,18 +63,21 @@ public class DropdownPractices {
         monthDropdown.selectByValue("11");
         //Select day using : index number
         dayDropdown.selectByIndex(0);
-        String expectedYear="1924";
-        String expectedMonth="December";
-        String expectedDay="1";
+        String expectedYear = "1924";
+        String expectedMonth = "December";
+        String expectedDay = "1";
 
-        String actualYear=yearDropdown.getFirstSelectedOption().getText();
-        String actualMonth=monthDropdown.getFirstSelectedOption().getText();
-        String actualDay=dayDropdown.getFirstSelectedOption().getText();
+        String actualYear = yearDropdown.getFirstSelectedOption().getText();
+        String actualMonth = monthDropdown.getFirstSelectedOption().getText();
+        String actualDay = dayDropdown.getFirstSelectedOption().getText();
         Assert.assertTrue(actualYear.equals(expectedYear));
         Assert.assertTrue(actualMonth.equals(expectedMonth));
         Assert.assertTrue(actualDay.equals(expectedDay));
 
 
-
+    }
+    @AfterMethod
+    public void tearDownMethod(){
+        driver.close();
     }
 }
