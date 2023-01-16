@@ -1,6 +1,7 @@
 package com.cydeo.tests.day7_webtables_utilities_javafaker;
 
 import com.cydeo.utilities.BrowserUtils;
+import com.cydeo.utilities.CRM_Utilities;
 import com.cydeo.utilities.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
@@ -21,6 +22,8 @@ public class T3_CRM_LOGIN {
         //1. Create new test and make setups
         //2. Goto:https://login1.nextbasecrm.com/
         driver.get("https://login1.nextbasecrm.com");
+        //calling my utility method to login helpdesk1
+        CRM_Utilities.crm_login(driver);
 
         //6. Verify title is as expected:
         BrowserUtils.verifyTitle(driver,"My tasks");
