@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public class DropdownPractices {
-    public WebDriver driver;
+       public WebDriver driver;
 
     @BeforeMethod
     public void setUpMethod() {

@@ -32,4 +32,15 @@ public class T3_CRM_LOGIN {
 
 
     }
-}
+    @Test
+    public void crm_login_test_2(){
+        //1. Create new test and make setups
+        //2. Goto:https://login1.nextbasecrm.com/
+        driver.get("https://login1.nextbasecrm.com");
+        //calling my utility method to login helpdesk1
+        CRM_Utilities.crm_login(driver,"helpdesk2@cybertekschool.com","UserUser");
+
+        //6. Verify title is as expected:
+        BrowserUtils.verifyTitle(driver,"Portal");
+        System.out.println(driver.getTitle());
+}}
