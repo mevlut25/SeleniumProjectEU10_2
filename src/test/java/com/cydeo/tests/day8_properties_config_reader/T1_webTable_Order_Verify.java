@@ -27,9 +27,9 @@ public class T1_webTable_Order_Verify {
         //Locate the cell that has Bob Martin text in it
             WebElement bobMartinCell=driver.findElement(By.xpath("//table[@id='ctl00_MainContent_orderGrid']//td[.='Bob Martin']"));
             System.out.println("bobMartinCell.getText() = " +bobMartinCell.getText());
-            String expectedBobNmae="Bob Martin";
+            String expectedBobName="Bob Martin";
             String actualBobName=bobMartinCell.getText();
-            Assert.assertEquals(actualBobName,expectedBobNmae);
+            Assert.assertEquals(actualBobName,expectedBobName);
             //2. VerifyBob’s name is listed as expected.
             //Expected: “Bob Martin”
             //3. VerifyBobMartin’s order date is as expected
